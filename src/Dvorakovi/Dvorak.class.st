@@ -36,13 +36,19 @@ dvorak datumNarozeni: datum.
 
 ]
 
+{ #category : #utilities }
+Dvorak class >> sklonovanyVek: anInteger [
+
+^anInteger printString, ' let'.
+]
+
 { #category : #accessing }
 Dvorak >> datumNarozeni [
 
 ^datumNarozeni
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Dvorak >> datumNarozeni: aDate [
 
 datumNarozeni := aDate.
@@ -53,7 +59,7 @@ Dvorak >> jmeno [
 ^jmeno.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Dvorak >> jmeno: aString [
 
 jmeno := aString
@@ -71,7 +77,7 @@ Dvorak >> obrazek: aForm [
 obrazek := aForm
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Dvorak >> obrazekZeSouboru: aString [
 
 obrazek := Form fromFileNamed: aString.
@@ -97,7 +103,7 @@ Dvorak >> predstavovaciText [
 ^
 	'Ahoj, ja jsem ', self jmenoAPrijmeni, 
 	' a narodil jsem se ',self datumNarozeni printString,
-	' a je mi ',self vek printString, ' let.'.
+	' a je mi ',(self class sklonovanyVek: (self vek)).
 ]
 
 { #category : #accessing }
