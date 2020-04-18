@@ -10,10 +10,21 @@ Class {
 	#category : #Dvorakovi
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 Dvorak class >> seJmenem: jmeno aPrijmenim: prijmeni aObrazkemZeSouboru: nazevSouboru aDatemNarozeni: datum [
 
-"vytvori noveho Dvoraka, nastavi mu zadane jmeno a prijmeni a vrati ho."
+"
+vytvori noveho Dvoraka, nastavi mu zadane jmeno a prijmeni a vrati ho.
+
+Priklad:
+
+Dvorak 
+	seJmenem: 'Tomik' 
+	aPrijmenim:'Dvorak' 
+	aObrazkemZeSouboru: '/tmp/tomas.png' 
+	aDatemNarozeni: (Date year: 1979 month: 11 day: 24).
+
+"
 
 |dvorak|
 dvorak:= Dvorak new.
@@ -83,7 +94,10 @@ Dvorak inform: self predstavovaciText.
 { #category : #accessing }
 Dvorak >> predstavovaciText [
 
-^'Ahoj, ja jsem ', self jmenoAPrijmeni, 'a narodil jsem se ',self datumNarozeni printString.
+^
+	'Ahoj, ja jsem ', self jmenoAPrijmeni, 
+	' a narodil jsem se ',self datumNarozeni printString,
+	' a je mi ',self vek printString, ' let.'.
 ]
 
 { #category : #accessing }
