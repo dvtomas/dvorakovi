@@ -39,7 +39,12 @@ dvorak datumNarozeni: datum.
 { #category : #utilities }
 Dvorak class >> sklonovanyVek: anInteger [
 
-^anInteger printString, ' let'.
+^(anInteger=1)
+	ifTrue: ['je mi 1 rok' ]
+	ifFalse: [(anInteger=2) | (anInteger = 3) | (anInteger = 4)
+		ifTrue: ['jsou mi ', anInteger printString, ' roky'] 
+		ifFalse: ['je mi ', anInteger printString, ' let']
+	].
 ]
 
 { #category : #accessing }
@@ -103,7 +108,7 @@ Dvorak >> predstavovaciText [
 ^
 	'Ahoj, ja jsem ', self jmenoAPrijmeni, 
 	' a narodil jsem se ',self datumNarozeni printString,
-	' a je mi ',(self class sklonovanyVek: (self vek)).
+	' a ', ((self class sklonovanyVek: (self vek)),'.').
 ]
 
 { #category : #accessing }
