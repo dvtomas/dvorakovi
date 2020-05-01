@@ -10,6 +10,32 @@ Class {
 	#category : #Dvorakovi
 }
 
+{ #category : #utilities }
+Dvorak class >> ceskeDatum: aDate [
+
+|sklonovanyMesic monthIndex |
+
+monthIndex := aDate monthIndex .
+
+sklonovanyMesic := 
+#(
+	'ledna' 
+	'unora'
+	'brezna'
+	'dubna'
+	'kvetna'
+	'cervna'
+	'cervence'
+	'srpna'
+	'zari'
+	'rijna'
+	'listopadu'
+	'prosince'
+) at: monthIndex.
+
+^aDate dayOfMonth printString,'. ', sklonovanyMesic,' ',aDate year printString.
+]
+
 { #category : #'instance creation' }
 Dvorak class >> seJmenem: jmeno aPrijmenim: prijmeni aObrazkemZeSouboru: nazevSouboru aDatemNarozeni: datum [
 
@@ -107,7 +133,7 @@ Dvorak >> predstavovaciText [
 
 ^
 	'Ahoj, ja jsem ', self jmenoAPrijmeni, 
-	' a narodil jsem se ',self datumNarozeni printString,
+	' a narodil jsem se ',(self class ceskeDatum: (self datumNarozeni)),
 	' a ', ((self class sklonovanyVek: (self vek)),'.').
 ]
 

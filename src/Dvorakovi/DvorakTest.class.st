@@ -8,6 +8,22 @@ Class {
 }
 
 { #category : #tests }
+DvorakTest >> testCeskeDatum [
+
+	self 
+		assert: (Dvorak ceskeDatum: (Date year: 1979 month: 12 day: 10))
+		equals: '10. prosince 1979'.
+		
+	self 
+		assert: (Dvorak ceskeDatum: (Date year: 2018 month: 1 day: 28))
+		equals: '28. ledna 2018'.
+		
+	self 
+		assert: (Dvorak ceskeDatum: (Date year: 1923 month: 10 day: 1))
+		equals: '1. rijna 1923'.
+]
+
+{ #category : #tests }
 DvorakTest >> testSklonovanyVek [
 
 	self 
